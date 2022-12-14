@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +8,7 @@
         <script src="based.js"></script>
     </head>
 <body>
-    <h1> Based or Cringe </h1>
+    <h1> Based or Cringe 2 </h1>
 </body>
 </html>
 </html>
