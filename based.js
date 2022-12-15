@@ -1,3 +1,4 @@
+refresh();
 function refresh() {
     $.ajax({url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'}).done(res => {
         //let obj = JSON.parse(res);
@@ -8,4 +9,3 @@ function refresh() {
     });
 }
 
-refresh();
