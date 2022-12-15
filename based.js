@@ -7,3 +7,5 @@ function refresh() {
         $("#info").html(res.extract.split(". ")[0])
     });
 }
+
+refresh();
