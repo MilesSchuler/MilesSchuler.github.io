@@ -20,9 +20,11 @@ window.addEventListener("keypress", e => {
 function refresh(id) {
     $('#' + id).css('border','3px solid yellow');
     $.ajax({url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'}).done(res => {
-        $('#data').html(res.title)
+        $('#data').html(res.title);
+        console.log(res);
+        $("#data").attr("href", res.content_urls.desktop.page);
         $('#' + id).css('border','3px solid black');
-        $("#info").html(res.extract.split(". ")[0])
+        $("#info").html(res.extract.split(". ")[0]);
     });
 }
 function initDatabase() {
