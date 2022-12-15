@@ -3,23 +3,21 @@
     <head>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-        <script src="based.js"></script>
-        <script src="//unpkg.com/brain.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+        <!--<script src="//unpkg.com/brain.js"></script>-->
     </head>
 <body>
     <h1> Based or Cringe</h1>
     <h3 id="data"></h3>
     <h4 id="info"></h4>
     <div id="container">
-        <button onclick="refresh()" style="width:200px;height:200px;font-size:30px;background-color:#4CBB17">
-            Based
-        </button>
-        <button onclick="refresh()" style="width:200px;height:200px;font-size:30px;background-color:lightgray">
-            Neutral
-        </button>
-        <button onclick="refresh()" style="width:200px;height:200px;font-size:30px;background-color:red">
-            Cringe
-        </button>
+        <button class="choice" id="1" style="background-color:#4CBB17;">Based</button>
+        <button class="choice" id="0" style="background-color:lightgray;">Neutral</button>
+        <button class="choice" id="-1" style="background-color:red;">Cringe</button>
     </div>
+    <script src="based.js"></script>
 </body>
 </html>

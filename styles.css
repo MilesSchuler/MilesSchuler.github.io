@@ -2,3 +2,11 @@ html {
     text-align: center;
     font-family: Tahoma;
 }
+.choice {
+    width:200px;
+    height:200px;
+    font-size:30px;
+}
+.choice:hover {
+    cursor: pointer;
+}
