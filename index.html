@@ -5,14 +5,16 @@
         <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
     </head>
 <body>
-    <h1> Based or Cringe 3 </h1>
+    <h1> Based or Cringe</h1>
     <h3 id="data"></h3>
+    <h4 id="info"></h4>
     <script>
         $.ajax({url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'}).done(res => {
             //let obj = JSON.parse(res);
             console.log(res);
             //console.log(obj)
             $('#data').html(res.title)
+            $("#info").html(res.extract.split(". ")[0])
         })
     </script>
 </body>
