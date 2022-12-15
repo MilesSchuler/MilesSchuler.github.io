@@ -7,19 +7,21 @@ window.onload = () => {
 }
 
 $('.choice').on('click', e => {
-    refresh();
+    refresh(parseInt(e.target.id));
     insert($('#data').html(), parseInt(e.target.id));
 })
 window.addEventListener("keypress", e => {
-    refresh();
     if (e.key == "1" || e.key == "2" || e.key == "3") {
+        refresh((parseInt(e.key) - 2) * -1);
         insert($('#data').html(), (parseInt(e.key) - 2) * -1);
     }
 });
 
-function refresh() {
+function refresh(id) {
+    $('#' + id).css('border','3px solid yellow');
     $.ajax({url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'}).done(res => {
         $('#data').html(res.title)
+        $('#' + id).css('border','3px solid black');
         $("#info").html(res.extract.split(". ")[0])
     });
 }
