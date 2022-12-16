@@ -1,30 +1,48 @@
 var db; 
 var app;
 
+var cooldown = false;
+
 window.onload = () => {
     initDatabase();
     refresh();
 }
 
-$('.choice').on('click', e => {
-    refresh(parseInt(e.target.id));
-    insert($('#data').html(), parseInt(e.target.id));
+$(".choice").on("click", e => {
+    if (!cooldown) {
+        refresh(parseInt(e.target.id));
+        insert($("#data").html(), parseInt(e.target.id));
+    }
 })
 window.addEventListener("keypress", e => {
     if (e.key == "1" || e.key == "2" || e.key == "3") {
-        refresh((parseInt(e.key) - 2) * -1);
-        insert($('#data').html(), (parseInt(e.key) - 2) * -1);
+        if (!cooldown) {
+            refresh((parseInt(e.key) - 2) * -1);
+            insert($("#data").html(), (parseInt(e.key) - 2) * -1);
+        }/* else {
+            $("#-1").css("border","3px solid red");
+            $("#0").css("border","3px solid red");
+            $("#1" + e.key).css("border","3px solid red");
+        }*/
     }
 });
 
 function refresh(id) {
-    $('#' + id).css('border','3px solid yellow');
-    $.ajax({url: 'https://en.wikipedia.org/api/rest_v1/page/random/summary'}).done(res => {
-        $('#data').html(res.title);
-        console.log(res);
-        $("#data").attr("href", res.content_urls.desktop.page);
-        $('#' + id).css('border','3px solid black');
-        $("#info").html(res.extract.split(". ")[0]);
+    cooldown = true;
+    $("#" + id).css("border","3px solid yellow");
+    $.ajax({url: "https://en.wikipedia.org/api/rest_v1/page/random/summary"}).done(res => {
+        window.setTimeout(() => {
+            $("#data").html(res.title);
+            console.log(res);
+            $("#data").attr("href", res.content_urls.desktop.page);
+
+            $("#-1").css("border","3px solid black");
+            $("#0").css("border","3px solid black");
+            $("#1").css("border","3px solid black");
+            // use natural language processing to get first sentence
+            $("#info").html(nlp(res.extract).json().map(o=> o.text)[0].toString());
+            cooldown = false;
+        }, 1000);
     });
 }
 function initDatabase() {
