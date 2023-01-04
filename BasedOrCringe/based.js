@@ -1,6 +1,6 @@
 var db; 
 var app;
-
+var judge_count = 0
 var cooldown = false;
 
 window.onload = () => {
@@ -10,6 +10,7 @@ window.onload = () => {
 
 $(".choice").on("click", e => {
     if (!cooldown) {
+        judge_count++
         refresh(parseInt(e.target.id));
         insert($("#data").html(), parseInt(e.target.id));
     }
@@ -17,17 +18,15 @@ $(".choice").on("click", e => {
 window.addEventListener("keypress", e => {
     if (e.key == "1" || e.key == "2" || e.key == "3") {
         if (!cooldown) {
+            judge_count++
             refresh((parseInt(e.key) - 2) * -1);
             insert($("#data").html(), (parseInt(e.key) - 2) * -1);
-        }/* else {
-            $("#-1").css("border","3px solid red");
-            $("#0").css("border","3px solid red");
-            $("#1" + e.key).css("border","3px solid red");
-        }*/
+        }
     }
 });
 
 function refresh(id) {
+    $("#header").html("Based or Cringe: " + judge_count)
     cooldown = true;
     $("#" + id).css("border","3px solid yellow");
     $.ajax({url: "https://en.wikipedia.org/api/rest_v1/page/random/summary"}).done(res => {
