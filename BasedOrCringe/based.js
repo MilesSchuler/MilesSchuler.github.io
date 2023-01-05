@@ -63,10 +63,11 @@ function initDatabase() {
     });
 }*/
 function insert(key, value) {
-    db.collection("items").doc(key.hashCode()).set({
+    db.collection("items").doc(key.hashCode().toString()).set({
         key: key.toLowerCase(),
         value: value
     });
+    alert(key.hashCode())
 }
 
 String.prototype.hashCode = function() {
