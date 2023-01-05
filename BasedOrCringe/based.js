@@ -67,7 +67,6 @@ function insert(key, value) {
         key: key.toLowerCase(),
         value: value
     });
-    alert(key.hashCode())
 }
 
 String.prototype.hashCode = function() {
