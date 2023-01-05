@@ -10,7 +10,6 @@ window.onload = () => {
 
 $(".choice").on("click", e => {
     if (!cooldown) {
-        judge_count++
         refresh(parseInt(e.target.id));
         insert($("#data").html(), parseInt(e.target.id));
     }
@@ -18,7 +17,6 @@ $(".choice").on("click", e => {
 window.addEventListener("keypress", e => {
     if (e.key == "1" || e.key == "2" || e.key == "3") {
         if (!cooldown) {
-            judge_count++
             refresh((parseInt(e.key) - 2) * -1);
             insert($("#data").html(), (parseInt(e.key) - 2) * -1);
         }
@@ -26,6 +24,7 @@ window.addEventListener("keypress", e => {
 });
 
 function refresh(id) {
+    judge_count++
     $("#header").html("Based or Cringe: " + judge_count)
     cooldown = true;
     $("#" + id).css("border","3px solid yellow");
