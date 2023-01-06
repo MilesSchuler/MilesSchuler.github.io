@@ -1,7 +1,6 @@
 corner_buttons = ["mb-00", "mb-06", "mb-60", "mb-66"]
 
 window.onload = () => {
-    console.log("loaded");
     for (i = 0; i < 7; i++) {
         let buttonholder = document.createElement("div");
         buttonholder.className = "button-group";
@@ -36,9 +35,8 @@ function allMossOn() {
         for (j = 0; j < 7; j++) {
             id = "mb-" + i + j
             if (!corner_buttons.includes(id)) {
-                $("#" + id).css("backgroundColor", "#00ce15")
                 $("#" + id).name = "on"
-                console.log(id)
+                $("#" + id).css("backgroundColor", "#00ce15")
             }
         }
     }
@@ -48,8 +46,8 @@ function resetMoss() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             id = "mb-" + i + j
-            $("#" + id).css("backgroundColor", "#9d9d9d")
             $("#" + id).name = "off"
+            $("#" + id).css("backgroundColor", "#9d9d9d")
         }
     }
 }
