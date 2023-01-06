@@ -34,8 +34,9 @@ function allMossOn() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             id = "mb-" + i + j
+            button = document.getElementById(id)
             if (!corner_buttons.includes(id)) {
-                $("#" + id).name = "on"
+                button.name = "on"
                 $("#" + id).css("backgroundColor", "#00ce15")
             }
         }
@@ -46,7 +47,8 @@ function resetMoss() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             id = "mb-" + i + j
-            $("#" + id).name = "off"
+            button = document.getElementById(id)
+            button.name = "off"
             $("#" + id).css("backgroundColor", "#9d9d9d")
         }
     }
