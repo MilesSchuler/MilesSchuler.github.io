@@ -51,8 +51,8 @@ document.onclick = function(event) {
             }
         }
     }
-    document.getElementById("bonemeal_calc").textContent = "Bonemeal Per Cycle: " + total
-    document.getElementById("bonemeal_per_hour_calc").textContent = "Bonemeal Per Hour (30gt Cycle): " + (total * 2400 - 2400)
+    document.getElementById("bonemeal_calc").textContent = "Bonemeal Created Per Cycle: " + total
+    document.getElementById("bonemeal_per_hour_calc").textContent = "Bonemeal Per Hour (30gt Cycle, Recycling):" + (total * 2400 - 2400)
 };
 
 function all_moss_on() {
