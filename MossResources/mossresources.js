@@ -1,6 +1,13 @@
 BONEMEAL_PER_MOSS_WITH_TALL_GRASS = 0.1146875
 BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS = 0.1133482143
 corner_buttons = ["mb-00", "mb-06", "mb-60", "mb-66"]
+GENERATION_PROBABILITIES = [[0.0, 0.188, 0.375, 0.375, 0.375, 0.188, 0.0],
+                            [0.188, 0.625, 0.875, 0.875, 0.875, 0.625, 0.188],
+                            [0.375, 0.875, 1.0, 1.0, 1.0, 0.875, 0.375],
+                            [0.375, 0.875, 1.0, 0.0, 1.0, 0.875, 0.375],
+                            [0.375, 0.875, 1.0, 1.0, 1.0, 0.875, 0.375],
+                            [0.188, 0.625, 0.875, 0.875, 0.875, 0.625, 0.188],
+                            [0.0, 0.188, 0.375, 0.375, 0.375, 0.188, 0.0]]
 
 window.onload = () => {
     for (i = 0; i < 7; i++) {
@@ -38,11 +45,11 @@ document.onclick = function(event) {
         for (j = 0; j < 7; j++) {
             b = document.getElementById("mb-" + i + j)
             if (b.name == "on") {
-                total++
+                total += GENERATION_PROBABILITIES[i][j] * bonemeal_per_moss()
             }
         }
     }
-    document.getElementById("bonemeal_calc").textContent = "Bonemeal Per Cycle: " + total * bonemeal_per_moss()
+    document.getElementById("bonemeal_calc").textContent = "Bonemeal Per Cycle: " + total
 };
 
 function all_moss_on() {
@@ -95,7 +102,7 @@ function reset_moss() {
 
 function bonemeal_per_moss() {
     if (document.getElementById("use-tall-grass").checked) {
-        return BONEMEAL_PER_MOSS_WITH_TALL_GRASS;
+        return BONEMEAL_PER_MOSS_WITH_TALL_GRASS
     } else {
         return BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS;
     }
