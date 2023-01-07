@@ -9,9 +9,16 @@
         <h1> Moss Resources </h1>
         <div class="text-center" id="text-center"></div>
 
-        <label for="none-button">Presets: </label>
-        <button id="none-button" onclick="resetMoss()" >Reset</button>
-        <button id="none-button" onclick="allMossOn()">All</button>
+        <label for="reset-button">Presets: </label>
+        <button id="reset-button" onclick="reset_moss()" >Reset</button>
+        <button id="all-button" onclick="all_moss_on()">All</button>
+        <button id="three-by-three-button" onclick="three_by_three_on()">3x3</button>
+        <button id="five-by-five-button" onclick="five_by_five_on()">5x5</button>
         <script src="mossresources.js"></script>
+        <br>
+        <label for="use-tall-grass">Allow Tall Grass Generation:</label>
+        <input id="use-tall-grass" type="checkbox">
+        <br>
+        <p id="bonemeal_calc">Bonemeal Per Cycle: 0.0</p>
     </body>
 </html>
