@@ -1,5 +1,7 @@
 BONEMEAL_PER_MOSS_WITH_TALL_GRASS = 0.1146875
 BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS = 0.1133482143
+BONEMEAL_PER_MOSS_WITHOUT_FOLIAGE = 0.09285714286
+// https://docs.google.com/spreadsheets/d/1bI4TXDOfZdcIPO3c5jNOmgeT-FhhkCvbrP7nky58Mso/edit#gid=0
 corner_buttons = ["mb-00", "mb-06", "mb-60", "mb-66"]
 GENERATION_PROBABILITIES = [[0.0, 0.188, 0.375, 0.375, 0.375, 0.188, 0.0],
                             [0.188, 0.625, 0.875, 0.875, 0.875, 0.625, 0.188],
@@ -50,6 +52,7 @@ document.onclick = function(event) {
         }
     }
     document.getElementById("bonemeal_calc").textContent = "Bonemeal Per Cycle: " + total
+    document.getElementById("bonemeal_per_hour_calc").textContent = "Bonemeal Per Hour (30gt Cycle): " + total * 2400
 };
 
 function all_moss_on() {
@@ -101,7 +104,9 @@ function reset_moss() {
 }
 
 function bonemeal_per_moss() {
-    if (document.getElementById("use-tall-grass").checked) {
+    if (!document.getElementById("use-foliage").checked) {
+        return BONEMEAL_PER_MOSS_WITHOUT_FOLIAGE
+    } else if (document.getElementById("use-tall-grass").checked) {
         return BONEMEAL_PER_MOSS_WITH_TALL_GRASS
     } else {
         return BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS;
