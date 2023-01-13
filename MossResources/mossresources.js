@@ -55,10 +55,12 @@ document.onclick = function(event) {
     }
 
     if (document.getElementById("mb-33").name == "on") {
-        if (document.getElementById("use-tall-grass").checked) {
-            total += BONEMEAL_PER_MOSS_WITHOUT_MOSS
-        } else {
-            total += BONEMEAL_PER_MOSS_WITHOUT_MOSS_AND_TALL_GRASS
+        if (document.getElementById("use-foliage").checked ) {
+            if (document.getElementById("use-tall-grass").checked) {
+                total += BONEMEAL_PER_MOSS_WITHOUT_MOSS
+            } else {
+                total += BONEMEAL_PER_MOSS_WITHOUT_MOSS_AND_TALL_GRASS
+            }
         }
     }
 
