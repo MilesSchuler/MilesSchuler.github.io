@@ -1,3 +1,5 @@
+const { and } = require("mathjs")
+
 BONEMEAL_PER_MOSS_WITH_TALL_GRASS = 0.1146875
 BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS = 0.1133482143
 BONEMEAL_PER_MOSS_WITHOUT_FOLIAGE = 0.09285714286
@@ -50,6 +52,9 @@ document.onclick = function(event) {
                 total += GENERATION_PROBABILITIES[i][j] * bonemeal_per_moss()
             }
         }
+    }
+    if (document.getElementById("mb-33").name == "on") {
+        total += bonemeal_per_moss()
     }
     document.getElementById("bonemeal_calc").textContent = "Bonemeal Created Per Cycle: " + total
     document.getElementById("bonemeal_per_hour_calc").textContent = "Bonemeal Per Hour (30gt Cycle, Recycling): " + (total * 2400 - 2400)
