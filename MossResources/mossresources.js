@@ -1,8 +1,8 @@
-const { and } = require("mathjs")
-
 BONEMEAL_PER_MOSS_WITH_TALL_GRASS = 0.1146875
 BONEMEAL_PER_MOSS_WITHOUT_TALL_GRASS = 0.1133482143
 BONEMEAL_PER_MOSS_WITHOUT_FOLIAGE = 0.09285714286
+BONEMEAL_PER_MOSS_WITHOUT_MOSS = 0.02183035714
+BONEMEAL_PER_MOSS_WITHOUT_MOSS_AND_TALL_GRASS = 0.02049107143
 // https://docs.google.com/spreadsheets/d/1bI4TXDOfZdcIPO3c5jNOmgeT-FhhkCvbrP7nky58Mso/edit#gid=0
 corner_buttons = ["mb-00", "mb-06", "mb-60", "mb-66"]
 GENERATION_PROBABILITIES = [[0.0, 0.188, 0.375, 0.375, 0.375, 0.188, 0.0],
@@ -53,9 +53,15 @@ document.onclick = function(event) {
             }
         }
     }
+
     if (document.getElementById("mb-33").name == "on") {
-        total += bonemeal_per_moss()
+        if (document.getElementById("use-tall-grass").checked) {
+            total += BONEMEAL_PER_MOSS_WITHOUT_MOSS
+        } else {
+            total += BONEMEAL_PER_MOSS_WITHOUT_MOSS_AND_TALL_GRASS
+        }
     }
+
     document.getElementById("bonemeal_calc").textContent = "Bonemeal Created Per Cycle: " + total
     document.getElementById("bonemeal_per_hour_calc").textContent = "Bonemeal Per Hour (30gt Cycle, Recycling): " + (total * 2400 - 2400)
 };
