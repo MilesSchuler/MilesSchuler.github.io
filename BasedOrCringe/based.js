@@ -40,7 +40,7 @@ function refresh(id) {
             // use natural language processing to get first sentence
             $("#info").html(nlp(res.extract).json().map(o=> o.text)[0].toString());
             cooldown = false;
-        }, 1000);
+        }, 300);
     });
 }
 function initDatabase() {
