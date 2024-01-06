@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <!--<link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     </head>
     <body>
@@ -15,8 +15,8 @@
                 dataType: "jsonp",
                 async: false,
                 success: function(msg)  {
-                    console.log(msg);
-                    $("#data").innerHTML = JSON.stringify(json.result);
+                    console.log(JSON.stringify(json.result));
+                    //$("#data").innerHTML = JSON.stringify(json.result);
                 },
                 error: function()  {
                     console.log('error')
