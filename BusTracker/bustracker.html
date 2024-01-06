@@ -12,7 +12,6 @@
             $.ajax({
                 url: "https://s3.amazonaws.com/kcm-alerts-realtime-prod/vehiclepositions_pb.json",
                 type: "GET",
-                dataType: "jsonp",
                 async: false,
                 success: function(msg)  {
                     console.log(JSON.stringify(json.result));
